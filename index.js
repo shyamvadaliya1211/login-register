@@ -2,6 +2,7 @@ const http = require('http');
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const path = require('path');
 
 
 const app = express();
@@ -28,6 +29,10 @@ app.use(bodyParser.urlencoded({
 // Body Parser for JSON
 app.use(bodyParser.json({
     limit: '50mb',
+}));
+
+app.use(express.static(path.join(__dirname, 'public'), {
+    maxage: 0
 }));
 
 app.get('/', function(req, res) {

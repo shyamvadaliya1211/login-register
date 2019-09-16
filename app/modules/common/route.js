@@ -8,5 +8,5 @@ const commonCtrl = require('./controller');
  * @return {[null]}     [null]
  */
 exports.init = (app) => {
-	app.post('/api/v1/longitude-latitude', cors(), commonCtrl.longitudeLatitude);
+	// app.post('/api/v1/longitude-latitude', cors(), commonCtrl.longitudeLatitude);
 };
