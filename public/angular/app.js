@@ -1,1 +1,1 @@
-const logRegModule = angular.module('logRegModule', ['ui.router', 'toastr']);
+const logRegModule = angular.module('logRegModule', ['ngAnimate', 'ui.router', 'toastr']);
