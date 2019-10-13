@@ -27,6 +27,7 @@ const allCSSFiles = [
     './node_modules/angular-toastr/dist/angular-toastr.min.css',
     './public/css/sass/login.css',
     './public/css/sass/register.css',
+    './public/css/sass/global.css',
 ];
 
 gulp.task('min-css', () => gulp.src(allCSSFiles)

@@ -1,6 +1,8 @@
 const http = require('http');
 const express = require('express');
 const bodyParser = require('body-parser');
+const expressValidator = require('express-validator');
+const flash = require('connect-flash');
 const mongoose = require('mongoose');
 const path = require('path');
 
@@ -8,12 +10,13 @@ const path = require('path');
 const app = express();
 
 // connect mongDB
-mongoose.connect('mongodb://localhost/test-dev', {
+mongoose.connect('mongodb://localhost/login-register', {
     useMongoClient: true,
 });
 
 // register available mongoose schema
 require('./app/modules/common/model');
+require('./app/modules/user/model');
 
 app.set('port', 1211);
 app.set('views', `${__dirname}/app/views`);
@@ -26,10 +29,14 @@ app.use(bodyParser.urlencoded({
     limit: '50mb',
 }));
 
+app.use(expressValidator());
+
 // Body Parser for JSON
 app.use(bodyParser.json({
     limit: '50mb',
 }));
+
+app.use(flash());
 
 app.use(express.static(path.join(__dirname, 'public'), {
     maxage: 0
@@ -46,3 +53,4 @@ server.listen(app.get('port'), () => {
 
 // Load dynamic modules
 require('./app/modules/common/init').init(app);
+require('./app/modules/user/init').init(app);
