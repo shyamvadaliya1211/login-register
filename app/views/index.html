@@ -6,19 +6,18 @@
     
     <script type="text/javascript" src="/build/script.min.js"></script>
     <script type="text/javascript" src="/angular/app.js"></script>
+    <script type="text/javascript" src="/angular/routes/routes.js"></script>
     <script type="text/javascript" src="/angular/controllers/register.js"></script>
     <script type="text/javascript" src="/angular/routes.js"></script>
 </head>
 <body ng-app="logRegModule">
     <div ng-controller="registerController">
-        <h1>Success Run</h1>
         <header data-ng-include="'/view/header.html'"></header>
     </div>
-
-    <div>
+    <div id="content">
     	<section>
-                <div ui-view></div>
-            </section>
+    		<div ui-view></div>
+    	</section>
     </div>
 </body>
 </html>

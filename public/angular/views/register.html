@@ -1,0 +1,39 @@
+<div class="register-section" ng-controller="registerController">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+				<div class="card card-signin my-5">
+					<div class="card-body">
+						<h5 class="card-title text-center">User Register</h5>
+						<div class="form-signin" ng-form="registerForm" novalidate>
+							<div class="form-label-group">
+								<input type="text" id="inputFirstName" name="inputFirstName" class="form-control" placeholder="First Name" ng-required="true" data-ng-model="user.reg.model.firstName" ng-class="{'error-box': user.reg.isSubmit && registerForm.inputFirstName.$error.required}" autofocus>
+								<label for="inputFirstName">First Name</label>
+							</div>
+							<div class="form-label-group">
+								<input type="text" id="inputLastName" name="inputLastName" class="form-control" placeholder="Last Name" ng-required="true" data-ng-model="user.reg.model.lastName" ng-class="{'error-box': user.reg.isSubmit && registerForm.inputLastName.$error.required}">
+								<label for="inputLastName">Last Name</label>
+							</div>
+							<div class="form-label-group">
+								<input type="email" id="inputEmail" name="inputEmail" class="form-control" placeholder="Email address" ng-required="true" data-ng-model="user.reg.model.email" ng-class="{'error-box': user.reg.isSubmit && (registerForm.inputEmail.$error.required || registerForm.inputEmail.$error.email)}">
+								<label for="inputEmail">Email address</label>
+							</div>
+							<div class="form-label-group">
+								<input type="password" id="inputPassword" name="inputPassword" class="form-control" placeholder="Password" ng-required="true" data-ng-model="user.reg.model.password" ng-class="{'error-box': user.reg.isSubmit && registerForm.inputPassword.$error.required}">
+								<label for="inputPassword">Password</label>
+							</div>
+							<!-- <div class="custom-control custom-checkbox mb-3">
+								<input type="checkbox" class="custom-control-input" id="customCheck1">
+								<label class="custom-control-label" for="customCheck1">Remember password</label>
+							</div> -->
+							<button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" ng-click="user.reg.submit(registerForm)">Register</button>
+							<!-- <hr class="my-4">
+							<button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i class="fab fa-google mr-2"></i> Sign in with Google</button>
+							<button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit"><i class="fab fa-facebook-f mr-2"></i> Sign in with Facebook</button> -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

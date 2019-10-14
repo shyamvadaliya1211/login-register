@@ -1,4 +1,5 @@
 const gulp = require('gulp');
+const sass = require('gulp-sass');
 const nodemon = require('gulp-nodemon');
 const ngAnnotate = require('gulp-ng-annotate');
 const uglify = require('gulp-uglify');
@@ -6,6 +7,12 @@ const rename = require('gulp-rename');
 const concat = require('gulp-concat');
 const cleanCSS = require('gulp-clean-css');
 const sequence = require('gulp-sequence');
+
+gulp.task('sass', function() {
+    return gulp.src('./public/sass/*.scss')
+        .pipe(sass().on('error', sass.logError))
+        .pipe(gulp.dest('./public/css/sass'));
+});
 
 gulp.task('default', () => {
     nodemon({
@@ -18,6 +25,9 @@ gulp.task('default', () => {
 const allCSSFiles = [
     './node_modules/bootstrap/dist/css/bootstrap.min.css',
     './node_modules/angular-toastr/dist/angular-toastr.min.css',
+    './public/css/sass/login.css',
+    './public/css/sass/register.css',
+    './public/css/sass/global.css',
 ];
 
 gulp.task('min-css', () => gulp.src(allCSSFiles)

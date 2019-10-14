@@ -1,6 +1,18 @@
 <div class="header">
-	<div class="header-right">
-		<a data-ng-click="rg.loginClick()">Login</a>
-		<a href="#contact">Register</a>
-	</div>
+	<nav class="navbar navbar-expand-sm bg-dark navbar-dark justify-content-end">
+		<a class="navbar-brand" href="#">Samay</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+		<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse flex-grow-0 ml-auto" id="navbarSupportedContent">
+			<ul class="navbar-nav text-right">
+				<li class="nav-item active">
+					<button type="button" class="btn btn-link" ng-click="user.register()">Register</button>
+				</li>
+				<li class="nav-item active">
+					<button type="button" class="btn btn-link" ng-click="user.login()">Login</button>
+				</li>
+			</ul>
+		</div>
+	</nav>
 </div>
