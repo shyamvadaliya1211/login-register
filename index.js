@@ -36,6 +36,7 @@ app.use(bodyParser.json({
     limit: '50mb',
 }));
 
+
 app.use(flash());
 
 app.use(express.static(path.join(__dirname, 'public'), {

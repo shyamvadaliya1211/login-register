@@ -2,6 +2,12 @@ const mongoose = require('mongoose');
 const request = require('request');
 const userModel = mongoose.model('User');
 
+const helperCtr = require('../helper');
+
+exports.test = () => {
+    helperCtr.emailSend();
+};
+exports.test();
 exports.register = (req, res) => {
 	console.log('>>>>>>>>>>>>>>>>> req.body', req.body);
 
