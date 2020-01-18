@@ -12,6 +12,7 @@ var userSchema = new Schema({
 	lastName: String,
 	email: String,
 	password: String,
+	status: Boolean,
 });
 
 mongoose.model('User', userSchema);

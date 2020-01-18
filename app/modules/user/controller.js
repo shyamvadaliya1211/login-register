@@ -4,10 +4,6 @@ const userModel = mongoose.model('User');
 
 const helperCtr = require('../helper');
 
-exports.test = () => {
-    helperCtr.emailSend();
-};
-exports.test();
 exports.register = (req, res) => {
 	console.log('>>>>>>>>>>>>>>>>> req.body', req.body);
 
@@ -32,6 +28,7 @@ exports.register = (req, res) => {
 
 
 		//
+		req.body.status = false;
         const user = new userModel(req.body);
 
         // because we set our user.provider to local our models/user.js validation will always be true
@@ -56,7 +53,9 @@ exports.register = (req, res) => {
 				});
 				return;
         	}
-
+        	const activeLink = 'http://' + req.headers.host + '/user/invitation-confirm-email/' + result._id;
+        	const emailBody = `<a href="${activeLink}" target="_blank"> click here </a>`;
+        	helperCtr.emailSend(req.body.email, 'User Register Successfully', emailBody);
         	res.json({
         		status: true,
         		msg: 'User register successfully.',

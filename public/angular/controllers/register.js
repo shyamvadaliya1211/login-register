@@ -20,7 +20,6 @@ logRegModule.controller('registerController', ($scope, $http, toastr, $location,
 
 	$scope.user.reg = {};
 	$scope.user.reg.model = {};
-	$scope.user.reg.model.email="shyam@gmail.com";
 	$scope.user.reg.isSubmit = false;
 	$scope.user.reg.submit = (form) => {
 		if (!form.$valid) {
@@ -31,7 +30,12 @@ logRegModule.controller('registerController', ($scope, $http, toastr, $location,
 		$scope.user.reg.isSubmit = false;
 
 		$http.post('/api/v1/user/register', $scope.user.reg.model).then((response) => {
-			console.log('>>>>>>>>>>>>>>>>>>>>> response', response);
+			if (response && response.data && response.data.status) {
+				toastr.success('Please check your email.', 'Register success');
+				$location.url('login');
+			} else {
+				toastr.error(response.data.msg);
+			}
 		});
 	};
 
