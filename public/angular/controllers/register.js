@@ -21,6 +21,7 @@ logRegModule.controller('registerController', ($scope, $http, toastr, $location,
 	$scope.user.reg = {};
 	$scope.user.reg.model = {};
 	$scope.user.reg.isSubmit = false;
+	$scope.user.reg.isLoading = false;
 	$scope.user.reg.submit = (form) => {
 		if (!form.$valid) {
 			$scope.user.reg.isSubmit = true;
@@ -28,13 +29,15 @@ logRegModule.controller('registerController', ($scope, $http, toastr, $location,
 		}
 
 		$scope.user.reg.isSubmit = false;
-
+		$scope.user.reg.isLoading = true;
 		$http.post('/api/v1/user/register', $scope.user.reg.model).then((response) => {
 			if (response && response.data && response.data.status) {
 				toastr.success('Please check your email.', 'Register success');
+				$scope.user.reg.isLoading = false;
 				$location.url('login');
 			} else {
 				toastr.error(response.data.msg);
+				$scope.user.reg.isLoading = false;
 			}
 		});
 	};

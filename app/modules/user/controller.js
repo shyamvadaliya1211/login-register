@@ -54,7 +54,7 @@ exports.register = (req, res) => {
 				return;
         	}
         	const activeLink = 'http://' + req.headers.host + '/user/invitation-confirm-email/' + result._id;
-        	const emailBody = `<a href="${activeLink}" target="_blank"> click here </a>`;
+        	const emailBody = `<a href="${activeLink}" target="_blank"> click here </a> OR Copy to link <br> ${activeLink}`;
         	helperCtr.emailSend(req.body.email, 'User Register Successfully', emailBody);
         	res.json({
         		status: true,
